@@ -23,8 +23,8 @@ website:
             href: projects/golf.md
           - text: "Exploratory Data Analysis"
             href: projects/eda.qmd
-          - text: "Data Acquisition"
-            href: projects/data-acquisition.qmd
+          - text: "Data Acquisition: Basketball Scouting"
+            href: projects/data-acquisition.md
           - text: "Final Project"
             href: projects/final-project.qmd
     right:
@@ -39,7 +39,7 @@ website:
         - projects/index.md
         - projects/golf.md
         - projects/eda.qmd
-        - projects/data-acquisition.qmd
+        - projects/data-acquisition.md
         - projects/final-project.qmd
 
 format:

@@ -25,7 +25,7 @@ I built this site using [Quarto](https://quarto.org/) and host it on [GitHub Pag
 ::: {.grid}
 
 ::: {.g-col-6}
-### [Golf Analytics Research](projects/golf.qmd)
+### [Golf Analytics Research](projects/golf.md)
 Look at my undergraduate research of spatial analytics from PGA Tour data.
 :::
 
@@ -35,8 +35,8 @@ Learn how I explore datasets to find interesting patterns and answer questions.
 :::
 
 ::: {.g-col-6}
-### [Data Collection Project](projects/data-acquisition.qmd)
-See how I gather data from different sources and prepare it for analysis.
+### [NBA Scouting Report: Data Collection Project](projects/data-acquisition.md)
+Using web scraping with Selenium and BeautifulSoup, I built a data-driven scouting system that identifies international players who best fit the Kings' roster needs.
 :::
 
 ::: {.g-col-6}

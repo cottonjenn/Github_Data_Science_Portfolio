@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Jenna Worthen">
-<meta name="dcterms.date" content="2025-01-01">
 
-<title>PGA Tour Spatial Analysis – Jenna Worthen - Data Science Portfolio</title>
+<title>golf – Jenna Worthen - Data Science Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -160,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
         <li>
     <a class="dropdown-item" href="../projects/data-acquisition.html">
- <span class="dropdown-text">Data Acquisition</span></a>
+ <span class="dropdown-text">Data Acquisition: Basketball Scouting</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../projects/final-project.html">
@@ -191,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../projects/golf.html">golf.html</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../projects/golf.html">Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -216,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../projects/golf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">golf.html</span></a>
+ <span class="menu-text">Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -228,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../projects/data-acquisition.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Acquisition Project</span></a>
+ <span class="menu-text">Finding Hidden Gems: A Data-Driven Scouting Report for the Sacramento Kings</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -242,48 +240,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#spatial-determination-of-number-of-shots-to-hole-out-on-a-professional-golf-hole" id="toc-spatial-determination-of-number-of-shots-to-hole-out-on-a-professional-golf-hole" class="nav-link active" data-scroll-target="#spatial-determination-of-number-of-shots-to-hole-out-on-a-professional-golf-hole">Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</a>
+  <ul class="collapse">
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#research-methodology" id="toc-research-methodology" class="nav-link" data-scroll-target="#research-methodology">Research Methodology</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">PGA Tour Spatial Analysis</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7"></h1></header><div class="quarto-title-block"><div class="quarto-title-tools-only"><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 
 
 
-<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Jenna Worthen </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2025</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+<section id="spatial-determination-of-number-of-shots-to-hole-out-on-a-professional-golf-hole" class="level1">
+<h1>Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</h1>
+<section id="abstract" class="level2">
+<h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
 <p>Golf is a globally popular sport centered on precision and consistency. Players aim to complete a course in as few strokes as possible, navigating anywhere from 100 to over 600 yards from the tee box to the hole while avoiding strategically placed obstacles. This project investigates the spatial and strategic elements of professional golf, with an initial focus on both the number of strokes remaining to hole out, and the variability associated with this estimate. Using data from the first hole of the 2023 Players Championship at TPC Sawgrass—comprising 1,764 strokes taken by 139 unique golfers, including coordinate locations and lie characteristics—we have mapped and transformed this data into a structured format, incorporating shapefiles of the golf course and applying spatial transformations. Through exploratory analysis, we aim to understand spatial variation in stroke progression. Current efforts focus on refining and interpreting this analysis, laying the groundwork for future modeling of stroke progression. The ultimate goal is to estimate, with uncertainty, the predicted number of strokes remaining for any location on the hole, enabling more informed strategies for playing the course.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<section id="research-methodology" class="level3">
+<h3 class="anchored" data-anchor-id="research-methodology">Research Methodology</h3>
+<ul>
+<li>started with plotting data with API key from google maps. We found the clarify to be diminished on certain parts of the hole. This was an issue as we need clear boundaries on the hole map marking the change in terrain to easily classify ball locations.</li>
+<li>more to come ….</li>
+</ul>
 
 
 <!-- -->
 
+</section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -737,20 +736,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "PGA Tour Spatial Analysis"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Jenna Worthen"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2025-01-01"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Golf is a globally popular sport centered on precision and consistency. Players aim to complete a course in as few strokes as possible, navigating anywhere from 100 to over 600 yards from the tee box to the hole while avoiding strategically placed obstacles. This project investigates the spatial and strategic elements of professional golf, with an initial focus on both the number of strokes remaining to hole out, and the variability associated with this estimate. Using data from the first hole of the 2023 Players Championship at TPC Sawgrass—comprising 1,764 strokes taken by 139 unique golfers, including coordinate locations and lie characteristics—we have mapped and transformed this data into a structured format, incorporating shapefiles of the golf course and applying spatial transformations. Through exploratory analysis, we aim to understand spatial variation in stroke progression. Current efforts focus on refining and interpreting this analysis, laying the groundwork for future modeling of stroke progression. The ultimate goal is to estimate, with uncertainty, the predicted number of strokes remaining for any location on the hole, enabling more informed strategies for playing the course.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Golf is a globally popular sport centered on precision and consistency. Players aim to complete a course in as few strokes as possible, navigating anywhere from 100 to over 600 yards from the tee box to the hole while avoiding strategically placed obstacles. This project investigates the spatial and strategic elements of professional golf, with an initial focus on both the number of strokes remaining to hole out, and the variability associated with this estimate. Using data from the first hole of the 2023 Players Championship at TPC Sawgrass—comprising 1,764 strokes taken by 139 unique golfers, including coordinate locations and lie characteristics—we have mapped and transformed this data into a structured format, incorporating shapefiles of the golf course and applying spatial transformations. Through exploratory analysis, we aim to understand spatial variation in stroke progression. Current efforts focus on refining and interpreting this analysis, laying the groundwork for future modeling of stroke progression. The ultimate goal is to estimate, with uncertainty, the predicted number of strokes remaining for any location on the hole, enabling more informed strategies for playing the course.</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">### Research Methodology</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>started with plotting data with API key from google maps. We found the clarify to be diminished on certain parts of the hole. This was an issue as we need clear boundaries on the hole map marking the change in terrain to easily classify ball locations. </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>more to come ....</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
