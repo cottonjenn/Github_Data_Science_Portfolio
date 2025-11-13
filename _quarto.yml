@@ -19,7 +19,8 @@ website:
         menu:
           - text: "All Projects"
             href: projects/index.md
-          - text: "---"
+          - text: "Golf Analytics Research"
+            href: projects/golf.md
           - text: "Exploratory Data Analysis"
             href: projects/eda.qmd
           - text: "Data Acquisition"
@@ -36,6 +37,7 @@ website:
     - title: "Projects"
       contents:
         - projects/index.md
+        - projects/golf.md
         - projects/eda.qmd
         - projects/data-acquisition.qmd
         - projects/final-project.qmd

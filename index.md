@@ -2,7 +2,7 @@
 title: "Welcome to My Data Science Portfolio"
 ---
 
-# Hello! I'm Jenna 👋
+# Hello! I'm Jenna 
 
 Welcome to my data science portfolio! 
 
@@ -23,6 +23,11 @@ I built this site using [Quarto](https://quarto.org/) and host it on [GitHub Pag
 ## My Projects
 
 ::: {.grid}
+
+::: {.g-col-6}
+### [Golf Analytics Research](projects/golf.qmd)
+Look at my undergraduate research of spatial analytics from PGA Tour data.
+:::
 
 ::: {.g-col-6}
 ### [Data Exploration Project](projects/eda.qmd)

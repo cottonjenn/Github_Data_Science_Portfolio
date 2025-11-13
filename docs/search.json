@@ -1,108 +1,20 @@
 [
   {
+    "objectID": "projects/golf.html",
+    "href": "projects/golf.html",
+    "title": "PGA Tour Spatial Analysis",
+    "section": "",
+    "text": "Golf is a globally popular sport centered on precision and consistency. Players aim to complete a course in as few strokes as possible, navigating anywhere from 100 to over 600 yards from the tee box to the hole while avoiding strategically placed obstacles. This project investigates the spatial and strategic elements of professional golf, with an initial focus on both the number of strokes remaining to hole out, and the variability associated with this estimate. Using data from the first hole of the 2023 Players Championship at TPC Sawgrass—comprising 1,764 strokes taken by 139 unique golfers, including coordinate locations and lie characteristics—we have mapped and transformed this data into a structured format, incorporating shapefiles of the golf course and applying spatial transformations. Through exploratory analysis, we aim to understand spatial variation in stroke progression. Current efforts focus on refining and interpreting this analysis, laying the groundwork for future modeling of stroke progression. The ultimate goal is to estimate, with uncertainty, the predicted number of strokes remaining for any location on the hole, enabling more informed strategies for playing the course.",
+    "crumbs": [
+      "golf.html"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "Welcome to my data science portfolio!\nI’m a Statistics and Data Science major at BYU from Houston, Texas. This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\nCheck out the About Me tab to know more about me and my background.\n\n\nThis portfolio shows my work learning data science which includes:\n\nTutorial Blog made in markdown explaining a simple SQL topic for Data Science\nProjects in my Data Science class (BYU Stat 386) coded in Python and markdown\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
-  },
-  {
-    "objectID": "index.html#about-this-portfolio",
-    "href": "index.html#about-this-portfolio",
-    "title": "Welcome to My Data Science Portfolio",
-    "section": "",
-    "text": "This portfolio shows my work learning data science. Each project includes:\n\nMy code with documentation\nVisualizations I created\nWhat I learned and discovered\n\nI built this site using Quarto and host it on GitHub Pages."
-  },
-  {
-    "objectID": "index.html#skills-im-learning",
-    "href": "index.html#skills-im-learning",
-    "title": "Welcome to My Data Science Portfolio",
-    "section": "",
-    "text": "Programming: Python, Pandas for data analysis\nVisualization: Creating charts with Matplotlib and Seaborn\nData Collection: Getting data from files, websites, and APIs\nAnalysis: Finding patterns and answering questions with data"
-  },
-  {
-    "objectID": "index.html#my-projects",
-    "href": "index.html#my-projects",
-    "title": "Welcome to My Data Science Portfolio",
-    "section": "",
-    "text": "Learn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
-  },
-  {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "SQL Diagram\nHere is a graphic representation of SQL Join (focusing on INNER, LEFT, and (FULL OUTER types)). The inner join can be understood by the top left visual where 2 venn diagrams overlap (this is where the 2 tables are similar). Left join is keeping the left circle and where the 2 overlap (left table and where they are similar). Then the full (or outer) join is including everything in the diagram while also inserting “NA” or “None” where data is missing because of the join."
-  },
-  {
-    "objectID": "blog.html#problem-statement",
-    "href": "blog.html#problem-statement",
-    "title": "Blog",
-    "section": "Problem Statement",
-    "text": "Problem Statement\nIn data science, combining data from multiple tables is common, but choosing the wrong SQL join can lead to incomplete or misleading results. This tutorial helps students understand how INNER, LEFT, and FULL OUTER joins affect outcomes when merging tables (e.g., customers and orders), and guides on selecting the right join for analysis tasks."
-  },
-  {
-    "objectID": "blog.html#key-stepssections",
-    "href": "blog.html#key-stepssections",
-    "title": "Blog",
-    "section": "Key Steps/Sections",
-    "text": "Key Steps/Sections\n\n0. SQL Reminders\n\nSELECT: Specifies the columns you want to retrieve from your tables. For example, to get an animal’s name and species, you’d write SELECT name, species. In joins, you’ll often select columns from multiple tables, so clarity is key.\nFROM: Indicates the table(s) you’re querying. In a join, you’ll list multiple tables here, like FROM zoo_animals, exhibits, but we use JOIN to link them properly.\nON: Defines the condition for matching rows between tables in a join. For example, ON zoo_animals.animal_id = exhibits.animal_id links the tables using the animal_id column. This is the glue that makes joins work.\ntableinitial.columnname: When working with multiple tables, column names might overlap (e.g., both tables could have an id column). To avoid ambiguity, use the table’s alias or name followed by a dot, like zoo_animals.animal_id or exhibits.exhibit_name. Aliases (e.g., zoo_animals AS z) make this shorter: z.animal_id. This is critical for clear, error-free queries.\n; (semicolon): Always end your SQL statements with a semicolon. It tells the database your query is complete, like a period in a sentence. Forgetting it can cause errors in some SQL systems (e.g., PostgreSQL), though SQLite is more forgiving.\n\n\n\n1. Setup: Two Simple Tables\nLet’s start with two basic tables to illustrate joins. Imagine we have a customers table (with customer details) and an orders table (with purchase records). We’ll use a primary key (customer_id) in customers that acts as a foreign key in orders. For this static tutorial, we’ll define the tables directly as Markdown tables below. In a real SQL environment (like SQLite, MySQL, or PostgreSQL), you would create these tables using CREATE TABLE and INSERT statements.\nCustomers Table:\n\n\n\ncustomer_id\nname\nemail\n\n\n\n\n1\nAlice\nalice@email.com\n\n\n2\nBob\nbob@email.com\n\n\n3\nCharlie\ncharlie@email.com\n\n\n4\nDana\ndana@email.com\n\n\n5\nEve\neve@email.com\n\n\n\nOrders Table:\n\n\n\norder_id\ncustomer_id\nproduct\namount\n\n\n\n\n101\n1\nLaptop\n1200.0\n\n\n102\n2\nPhone\n800.0\n\n\n103\n1\nTablet\n300.0\n\n\n104\n6\nMonitor\n200.0\n\n\n105\n3\nKeyboard\n50.0\n\n\n\n\n\n2. INNER JOIN: Matching Only\nAn INNER JOIN returns only rows where there’s a match in both tables based on the join condition (e.g., customer_id).\nSELECT c.customer_id, c.name, o.order_id, o.product, o.amount\nFROM customers c\nINNER JOIN orders o ON c.customer_id = o.customer_id;\nExpected Result:\n\n\n\ncustomer_id\nname\norder_id\nproduct\namount\n\n\n\n\n1\nAlice\n101\nLaptop\n1200.0\n\n\n1\nAlice\n103\nTablet\n300.0\n\n\n2\nBob\n102\nPhone\n800.0\n\n\n3\nCharlie\n105\nKeyboard\n50.0\n\n\n\nNotice: Only matched customers (1,2,3) appear; Dana (4), Eve (5), and the unmatched order (104 for customer 6) are excluded.\n\n\n3. LEFT JOIN: Keep All from Left\nA LEFT JOIN keeps all rows from the left table (customers), with matching rows from the right (orders). Unmatched right-side columns get NULL.\nSELECT c.customer_id, c.name, o.order_id, o.product, o.amount\nFROM customers c\nLEFT JOIN orders o ON c.customer_id = o.customer_id;\n\n\n\ncustomer_id\nname\norder_id\nproduct\namount\n\n\n\n\n1\nAlice\n101\nLaptop\n1200.0\n\n\n1\nAlice\n103\nTablet\n300.0\n\n\n2\nBob\n102\nPhone\n800.0\n\n\n3\nCharlie\n105\nKeyboard\n50.0\n\n\n4\nDana\nNone\nNone\nNone\n\n\n5\nEve\nNone\nNone\nNone\n\n\n\nHere, all customers are included, with NULLS for Dana and Eve’s orders. Unmatched orders (like 104) are dropped.\n\n\n4. FULL OUTER JOIN: Everything, Everywhere\nA FULL OUTER JOIN (or just OUTER JOIN in some dialects) includes all rows from both tables, with NULLs where there’s no match. (Note: In SQLite, this is FULL OUTER JOIN; in MySQL, it’s emulated with UNION of LEFT and RIGHT joins.)\nSELECT c.customer_id, c.name, o.order_id, o.product, o.amount\nFROM customers c\nFULL OUTER JOIN orders o ON c.customer_id = o.customer_id;\n\n\n\ncustomer_id\nname\norder_id\nproduct\namount\n\n\n\n\n1\nAlice\n101\nLaptop\n1200.0\n\n\n1\nAlice\n103\nTablet\n300.0\n\n\n2\nBob\n102\nPhone\n800.0\n\n\n3\nCharlie\n105\nKeyboard\n50.0\n\n\n4\nDana\nNone\nNone\nNone\n\n\n5\nEve\nNone\nNone\nNone\n\n\n6\nNone\n104\nMonitor\n200.0\n\n\n\nThis shows everything: matched rows, plus unmatched customers (4,5) and the unmatched order (104).\n\n\n5. Comparing Join Results\nThis table depicts a summary about SQL Joins based off of the examples we used.\n\n\n\n\n\n\n\n\n\n\nJoin Type\nRows Returned\nIncludes Unmatched Left?\nIncludes Unmatched Right?\nUse Case Example\n\n\n\n\nINNER JOIN\n4\nNo\nNo\nGet only customers with orders\n\n\nLEFT JOIN\n6\nYes (with NULLs)\nNo\nAnalyze all customers, including those without orders\n\n\nFULL OUTER JOIN\n7\nYes (with NULLs)\nYes (with NULLs)\nAudit all data, spotting orphans in either table"
-  },
-  {
-    "objectID": "blog.html#call-to-action",
-    "href": "blog.html#call-to-action",
-    "title": "Blog",
-    "section": "Call to Action",
-    "text": "Call to Action\n\nZoo Animals Table\nThis table lists animals in a zoo, with animal_id as the primary key.\n\n\n\nanimal_id\nname\nspecies\n\n\n\n\n1\nLeo\nLion\n\n\n2\nEllie\nElephant\n\n\n3\nGina\nGiraffe\n\n\n4\nPenny\nPenguin\n\n\n5\nToby\nTiger\n\n\n\n\n\nExhibits Table\nThis table lists exhibit assignments, with animal_id as a foreign key referencing the zoo_animals table.\n\n\n\nexhibit_id\nanimal_id\nexhibit_name\narea_sqft\n\n\n\n\n101\n1\nSavanna\n5000\n\n\n102\n3\nTall Plains\n3000\n\n\n103\n1\nBig Cats\n2000\n\n\n104\n6\nJungle\n4000\n\n\n105\n2\nElephant Enclosure\n6000\n\n\n\nNotes for Practice: - animal_id 6 in the exhibits table has no match in zoo_animals (unmatched right). - Animals like Penny (4) and Toby (5) in zoo_animals have no exhibits (unmatched left). - Use these tables to practice joins in an SQL editor like DB-Fiddle by creating them with CREATE TABLE and INSERT statements, similar to the SQL snippets in the previous tutorial."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "Jenna Worthen"
-  },
-  {
-    "objectID": "about.html#background",
-    "href": "about.html#background",
-    "title": "About Me",
-    "section": "Background",
-    "text": "Background\n\nNFL Big Data Bowl 2026 Mentee\n\nMet with advisors from the NFL biweekly\nPrepared predictive analytic competition submission in R (current project so more information to come)\n\nUniversity of Utah Athletics Project:\n\nBuilt an R Shiny dashboard to visualize longitudinal strength data for coaches\nApplied mixed models and integrated athlete monitoring tools (VALD, CATAPULT)\nDelivered weekly presentations to stakeholders and mentors\n\nGolf Analytics Research at BYU:\n\nGeoreferenced maps and indivdual data points in ARCGIS\nEstimated strokes-to-hole from any course location using ArcGIS and advanced statistical modeling\nQuantified uncertainty in predictions and visualized spatial variability in R\n\nTeaching & Mentorship:\n\nDeveloped Python-based learning modules for engineering and science students\nTA for multiple statistics courses, supporting students in labs and lectures\n\nLanguages: Fluent in English and Spanish"
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About Me",
-    "section": "Education",
-    "text": "Education\n\nStatistics: Data Science - Brigham Young University, 2026\nRelevant Coursework: Statistical Modeling, Data Visualization, Data Wrangling, Bayesian Statistics, Predictive Analytics, Machine Learning, Data Science Ecosystems, Analysis of Correlated Data, Computer Science and Data Structures"
-  },
-  {
-    "objectID": "about.html#skills-interests",
-    "href": "about.html#skills-interests",
-    "title": "About Me",
-    "section": "Skills & Interests",
-    "text": "Skills & Interests\n\nTechnical Skills\n\nProgramming: Python, R, SQL, HTML, Linux\nData Analysis: Pandas, NumPy, DataExplorer, Dplyr, Tidyr, Corrplot\nVisualization: Matplotlib, Seaborn, Ggplot2, Leaflet, Plotly\nPredictive Analytics: Regression Trees, BART, Random Forest, Penalized Linear and Logistic Regression, Stacked Ensembles\nMachine Learning: Scikit-learn, Tidy-Models, Keras, TensorFlow\nTools: Jupyter Notebooks, Git/GitHub, Tableau, ArcGIS\n\n\n\nAreas of Interest\n\nSports (Knowledge of Game Rules and Regulations: Rugby, Volleyball, Football, Tennis, Golf)\nEnergy Systems and Consumption\nHumanitarian Aid\nCrime Analysis"
-  },
-  {
-    "objectID": "about.html#goals",
-    "href": "about.html#goals",
-    "title": "About Me",
-    "section": "Goals",
-    "text": "Goals\n\nDrive strategy and performance insights in sports science and analytics through rigorous, creative data modeling\nFocus on uncovering patterns in sports performance and building reproducible, transparent analytics workflows"
-  },
-  {
-    "objectID": "about.html#contact",
-    "href": "about.html#contact",
-    "title": "About Me",
-    "section": "Contact",
-    "text": "Contact\n\nEmail: worthenj.281@gmail.com\nGitHub: github.com/cottinjenn\nLinkedIn: linkedin.com/in/jenna-worthen-b9a8b2299\n\n\nThis portfolio showcases my learning progress and projects completed during my data science studies."
-  },
-  {
-    "objectID": "about.html#get-to-know-me",
-    "href": "about.html#get-to-know-me",
-    "title": "About Me",
-    "section": "Get to know me",
-    "text": "Get to know me\n\nI love to play sports, paint, and do wedding makeup and hair.\nFrom Houston, Texas"
+    "text": "Welcome to my data science portfolio!\nI’m a Statistics and Data Science major at BYU from Houston, Texas. This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\nCheck out the About Me tab to know more about me and my background.\n\n\nThis portfolio shows my work learning data science which includes:\n\nTutorial Blog made in markdown explaining a simple SQL topic for Data Science\nProjects in my Data Science class (BYU Stat 386) coded in Python and markdown\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\n\n\nLook at my undergraduate research of spatial analytics from PGA Tour data.\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
   },
   {
     "objectID": "index.html#overview",
@@ -110,5 +22,22 @@
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
     "text": "This portfolio shows my work learning data science which includes:\n\nTutorial Blog made in markdown explaining a simple SQL topic for Data Science\nProjects in my Data Science class (BYU Stat 386) coded in Python and markdown\n\nI built this site using Quarto and host it on GitHub Pages."
+  },
+  {
+    "objectID": "index.html#my-projects",
+    "href": "index.html#my-projects",
+    "title": "Welcome to My Data Science Portfolio",
+    "section": "",
+    "text": "Look at my undergraduate research of spatial analytics from PGA Tour data.\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions.\n\n\n\nSee how I gather data from different sources and prepare it for analysis.\n\n\n\nSee how I tackle a data science project beginning to end.\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+  },
+  {
+    "objectID": "projects/golf.html#abstract",
+    "href": "projects/golf.html#abstract",
+    "title": "PGA Tour Spatial Analysis",
+    "section": "",
+    "text": "Golf is a globally popular sport centered on precision and consistency. Players aim to complete a course in as few strokes as possible, navigating anywhere from 100 to over 600 yards from the tee box to the hole while avoiding strategically placed obstacles. This project investigates the spatial and strategic elements of professional golf, with an initial focus on both the number of strokes remaining to hole out, and the variability associated with this estimate. Using data from the first hole of the 2023 Players Championship at TPC Sawgrass—comprising 1,764 strokes taken by 139 unique golfers, including coordinate locations and lie characteristics—we have mapped and transformed this data into a structured format, incorporating shapefiles of the golf course and applying spatial transformations. Through exploratory analysis, we aim to understand spatial variation in stroke progression. Current efforts focus on refining and interpreting this analysis, laying the groundwork for future modeling of stroke progression. The ultimate goal is to estimate, with uncertainty, the predicted number of strokes remaining for any location on the hole, enabling more informed strategies for playing the course.",
+    "crumbs": [
+      "golf.html"
+    ]
   }
 ]
