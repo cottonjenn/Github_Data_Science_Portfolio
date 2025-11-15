@@ -2,9 +2,13 @@
 
 ## Introduction
 
+This project originated as a mock assignment from a mentor simulating real-world NBA analytics work: the Sacramento Kings analytics staff needed recommendations for international players currently playing outside the NBA. The task provided mock JSON data on players who competed in both the NBA and major European leagues (EuroLeague, EuroCup, Spain's ACB, and Italy's Liga A), with the goal of demonstrating data ingestion, cleaning, exploratory data analysis, and communication skills.
+
+However, I saw an opportunity to expand this into a comprehensive data acquisition project for my portfolio. Rather than relying solely on the provided mock data, I decided to incorporate real NBA statistics by web scraping Basketball-Reference.com. This allowed me to ground the analysis in actual team performance data and demonstrate end-to-end data science skills—from scraping and cleaning to analysis and visualization.
+
 The Sacramento Kings haven't made the NBA playoffs since 2006—the longest active drought in professional sports. While the franchise has struggled with draft decisions and roster construction, one potential avenue for improvement lies in international scouting. International players offer tremendous value: they're often overlooked, cost-effective, and can fill specific roster gaps that traditional college prospects might not address.
 
-This project combines real NBA data with mock international player statistics to demonstrate how data science can enhance basketball operations. Using web scraping, data cleaning, and exploratory analysis, I built a scouting report that identifies which international prospects best fit the Kings' roster needs from the 2020-21 season.
+By combining real 2020-21 Kings performance data with mock international player statistics, this project demonstrates how data science can enhance basketball operations. Using web scraping, data cleaning, and exploratory analysis, I built a scouting report that identifies which international prospects best fit the Kings' specific roster needs.
 
 ## The Question
 
@@ -42,6 +46,7 @@ By launching a real browser, Selenium:
 - Guarantees all 12 tables are present and parseable
 
 ```python
+# Example Selenium code to scrape Basketball-Reference team page
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -169,6 +174,19 @@ The top prospects consistently outperformed Sacramento in rebounding, defensive 
 
 **Challenge #4**: Handling missing Box Plus/Minus data  
 **Solution**: Used player-level averages for Kings; neutral 0.0 for league baseline
+
+## Reflections and Future Improvements
+
+After completing this project, I identified a key methodological improvement for future iterations. Instead of comparing the Kings to league-wide averages, I should have scraped per-game and advanced statistics from each of the top 5 team rosters individually.
+
+This roster-level approach would have allowed me to:
+
+- **Pinpoint specific positional weaknesses** by comparing the Kings' roster construction to elite teams
+- **Identify role-specific gaps** rather than broad team averages
+- **Create more granular fit scores** that match prospects to exact roster holes
+- **Account for lineup compositions** and how individual players complement each other
+
+By analyzing the actual rosters of championship-contending teams, the fit score algorithm would rely on where the Kings were truly weak relative to what makes teams successful—not just abstract league averages. This would produce more actionable scouting recommendations tied to proven winning formulas.
 
 ## Conclusion
 
