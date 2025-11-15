@@ -197,5 +197,40 @@
     "crumbs": [
       "Finding Hidden Gems: A Data-Driven Scouting Report for the Sacramento Kings"
     ]
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About Me",
+    "section": "Education",
+    "text": "Education\n\nStatistics: Data Science - Brigham Young University, 2026\nRelevant Coursework: Statistical Modeling, Data Visualization, Data Wrangling, Bayesian Statistics, Predictive Analytics, Machine Learning, Data Science Ecosystems, Analysis of Correlated Data, Computer Science and Data Structures"
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About Me",
+    "section": "Background",
+    "text": "Background\n\nNFL Big Data Bowl 2026 Mentee\n\nMet with advisors from the NFL biweekly\nPrepared predictive analytic competition submission in R (current project so more information to come)\n\nUniversity of Utah Athletics Project:\n\nBuilt an R Shiny dashboard to visualize longitudinal strength data for coaches\nApplied mixed models and integrated athlete monitoring tools (VALD, CATAPULT)\nDelivered weekly presentations to stakeholders and mentors\n\nGolf Analytics Research at BYU:\n\nGeoreferenced maps and indivdual data points in ARCGIS\nEstimated strokes-to-hole from any course location using ArcGIS and advanced statistical modeling\nQuantified uncertainty in predictions and visualized spatial variability in R\n\nTeaching & Mentorship:\n\nDeveloped Python-based learning modules for engineering and science students\nTA for multiple statistics courses, supporting students in labs and lectures\n\nLanguages: Fluent in English and Spanish"
+  },
+  {
+    "objectID": "about.html#skills-interests",
+    "href": "about.html#skills-interests",
+    "title": "About Me",
+    "section": "Skills & Interests",
+    "text": "Skills & Interests\n\nTechnical Skills\n\nProgramming: Python, R, SQL, HTML, Linux\nData Analysis: Pandas, NumPy, DataExplorer, Dplyr, Tidyr, Corrplot\nVisualization: Matplotlib, Seaborn, Ggplot2, Leaflet, Plotly\nPredictive Analytics: Regression Trees, BART, Random Forest, Penalized Linear and Logistic Regression, Stacked Ensembles\nMachine Learning: Scikit-learn, Tidy-Models, Keras, TensorFlow\nTools: Jupyter Notebooks, Git/GitHub, Tableau, ArcGIS\n\n\n\nAreas of Interest\n\nSports (Knowledge of Game Rules and Regulations: Rugby, Volleyball, Football, Tennis, Golf)\nEnergy Systems and Consumption\nHumanitarian Aid\nCrime Analysis"
+  },
+  {
+    "objectID": "about.html#get-to-know-me",
+    "href": "about.html#get-to-know-me",
+    "title": "About Me",
+    "section": "Get to know me",
+    "text": "Get to know me\n\nI love to play sports, paint, and do wedding makeup and hair.\nFrom Houston, Texas"
+  },
+  {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About Me",
+    "section": "Contact",
+    "text": "Contact\n\nEmail: worthenj.281@gmail.com\nGitHub: github.com/cottinjenn\nLinkedIn: linkedin.com/in/jenna-worthen-b9a8b2299\n\n\nThis portfolio showcases my learning progress and projects completed during my data science studies."
   }
 ]
