@@ -104,6 +104,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -250,8 +279,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#research-methodology" id="toc-research-methodology" class="nav-link" data-scroll-target="#research-methodology">Research Methodology</a></li>
+  <li><a href="#hole-1-overview" id="toc-hole-1-overview" class="nav-link" data-scroll-target="#hole-1-overview">Hole 1 Overview</a></li>
+  <li><a href="#cleaning-data-and-map" id="toc-cleaning-data-and-map" class="nav-link" data-scroll-target="#cleaning-data-and-map">Cleaning data and Map</a></li>
   </ul></li>
+  <li><a href="#research-methodology" id="toc-research-methodology" class="nav-link" data-scroll-target="#research-methodology">Research Methodology</a>
+  <ul class="collapse">
+  <li><a href="#exloring-spatial-variation-through-linear-model" id="toc-exloring-spatial-variation-through-linear-model" class="nav-link" data-scroll-target="#exloring-spatial-variation-through-linear-model">Exloring Spatial Variation through Linear Model</a></li>
+  </ul></li>
+  <li><a href="#future-work" id="toc-future-work" class="nav-link" data-scroll-target="#future-work">Future Work</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -270,17 +305,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<section id="research-methodology" class="level3">
-<h3 class="anchored" data-anchor-id="research-methodology">Research Methodology</h3>
+<section id="hole-1-overview" class="level3">
+<h3 class="anchored" data-anchor-id="hole-1-overview">Hole 1 Overview</h3>
+<p>To begin this project we used data from the 2023 PGA Tour Players Championship at TPC Sawgrass. We focused on the first hole, a par 4 with a length of 385 yards. The data included shot locations, strokes taken, and player information for 139 unique golfers.</p>
+<p><img src="info.png" class="img-fluid" alt="Hole 1 Info"> <em><strong>Hole 1 Overview</strong>: Image from <a href="https://www.pgatour.com/tournaments/2023/the-players-championship/R2023011/course-stats">pgatour.com</a></em></p>
+</section>
+<section id="cleaning-data-and-map" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-data-and-map">Cleaning data and Map</h3>
+<p>In our exploratory data analysis, we found some problems with the initial data. The X, Y, Z coordiantes were in an unknown coordinate system, so we had to transform them into latitude and longitude using ArcGIS and a linear model. Additionally, we had to make our own map of the hole using shapefiles from TPC Sawgrass and ArcGIS.</p>
+<p><img src="arcgis.png" class="img-fluid" alt="ArcGIS"><em>How we made our Hole 1 map in ArcGIS</em></p>
+<p>After transforming the coordinates and making the map, we joined the shot data with the map data to classify each shot based on its location on the hole (e.g., fairway, rough, bunker). We created a new variable called NewBoundary to represent these classifications and to easily define spatial variation than can occur on different sides of the whole despite similar terrain.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="plot_data.png" class="img-fluid figure-img"></p>
+<figcaption>plot_data</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="research-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="research-methodology">Research Methodology</h2>
+<p>After cleaning and transforming the data, we focused on modeling the number of strokes remaining to hole out (StrokesRemaining) based on the shot location (NewBoundary) and round number (Round). We used a linear mixed-effects model to account for both fixed effects (NewBoundary and Round) and random effects (PlayerLastName) to capture individual player variability.</p>
+<section id="exloring-spatial-variation-through-linear-model" class="level3">
+<h3 class="anchored" data-anchor-id="exloring-spatial-variation-through-linear-model">Exloring Spatial Variation through Linear Model</h3>
+<section id="linear-mixed-effects-model-notation" class="level5">
+<h5 class="anchored" data-anchor-id="linear-mixed-effects-model-notation">Linear Mixed-Effects Model Notation</h5>
+<p>Let:</p>
 <ul>
-<li>started with plotting data with API key from google maps. We found the clarify to be diminished on certain parts of the hole. This was an issue as we need clear boundaries on the hole map marking the change in terrain to easily classify ball locations.</li>
-<li>more to come ….</li>
+<li><span class="math inline">\(y_{ij}\)</span> = StrokesRemaining for player <span class="math inline">\(i\)</span> on observation <span class="math inline">\(j\)</span></li>
+<li><span class="math inline">\(\beta_k\)</span> = fixed-effect coefficients for each NewBoundary category (because of <code>-1</code>, the model includes no intercept and estimates one coefficient per category)</li>
+<li><span class="math inline">\(\gamma_r\)</span> = fixed-effect coefficients for each Round (factor) level</li>
+<li><span class="math inline">\(b_i \sim N(0, \sigma_b^2)\)</span> = random intercept for player <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\epsilon_{ij} \sim N(0, \sigma^2)\)</span> = residual error</li>
 </ul>
+<p>The model can be written as:</p>
+<p><span class="math display">\[
+y_{ij} = \sum_{k=1}^{K} \beta_k \cdot \text{NewBoundary}*{ijk}
+;+
+\sum*{r=2}^{R} \gamma_r \cdot \mathbb{1}(\text{Round}*{ij} = r)
+;+
+b_i
+;+
+\epsilon*{ij}.
+\]</span></p>
+<p>By applying our model, we got the results below.</p>
+</section>
+<section id="linear-mixed-model-output-formatted-like-lmer-summary" class="level5">
+<h5 class="anchored" data-anchor-id="linear-mixed-model-output-formatted-like-lmer-summary">Linear Mixed Model Output (Formatted Like <code>lmer</code> Summary)</h5>
+<pre><code>Linear mixed model fit by REML ['lmerMod']
+Formula: StrokesRemaining ~ -1 + NewBoundary + as.factor(Round) + (1 | PlayerLastName)
+Data: filtered_data
+
+REML criterion at convergence: 1668.2
+
+Scaled residuals:
+     Min      1Q  Median      3Q     Max
+ -2.6382 -0.7887 -0.4565  0.8761  3.1484
+
+Random effects:
+ Groups          Name        Variance   Std.Dev.
+ PlayerLastName  (Intercept) 0.0008314  0.02883
+ Residual                     0.3509525 0.59241
+Number of obs: 918, groups: PlayerLastName, 73
+
+Fixed effects:
+                                       Estimate Std. Error t value
+ NewBoundaryFairway                     2.65860    0.04928  53.944
+ NewBoundaryFairway Bunker              3.22246    0.24284  13.270
+ NewBoundaryFringe                      2.01567    0.26547   7.593
+ NewBoundaryGreen                       1.43844    0.04346  33.096
+ NewBoundaryGreenside Bunker Bottom     3.71937    0.18492  20.113
+ NewBoundaryGreenside Bunker Top        3.17733    0.17165  18.511
+ NewBoundaryRough                       3.13767    0.07157  43.839
+ NewBoundaryTree Outline Left           3.47234    0.08905  38.992
+ NewBoundaryTree Outline Right          3.40411    0.34537   9.856
+ NewBoundaryTree Outline Top            3.62730    0.34712  10.450
+ as.factor(Round)2                     -0.16437    0.05575  -2.948
+ as.factor(Round)3                     -0.08638    0.05566  -1.552
+ as.factor(Round)4                      0.03694    0.05537   0.667
+
+Correlation matrix not shown by default, as p = 13 &gt; 12.
+Use print(x, correlation=TRUE) or vcov(x) if you need it.</code></pre>
+<p>With these results we learned that, for example, being in the fairway is associated with an estimated 2.66 strokes remaining to hole out, while being in the rough is associated with an estimated 3.14 strokes remaining, holding other factors constant. This indicates that players in the fairway are expected to require fewer strokes to complete the hole compared to those in the rough. Additionally, the random effect for PlayerLastName suggests that there is some variability in strokes remaining that can be attributed to individual player differences. As for the round effects, Round 2 shows a significant decrease in strokes remaining compared to Round 1, while Rounds 3 and 4 do not show significant differences.</p>
+</section>
+<section id="gpgp-spatial-model" class="level5">
+<h5 class="anchored" data-anchor-id="gpgp-spatial-model">GPGP Spatial Model</h5>
+<p>To further explore spatial variation, we are working on implementing a model that models Strokes remaining using a mean-only (intercept) Gaussian process regression with an anisotropic 2D Matérn covariance function, implemented via the Vecchia approximation with 20 nearest neighbors using the R package gpgp.</p>
+<section id="gpgp-model-notation" class="level6">
+<h6 class="anchored" data-anchor-id="gpgp-model-notation">GPGP Model Notation</h6>
+<p><span class="math display">\[
+y_i = \beta_0 + w(\mathbf{s}_i) + \varepsilon_i, \quad i = 1,\dots,n
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span> = <code>StrokesRemaining</code> (observed strokes-to-go from location <span class="math inline">\(i\)</span> on the green)<br>
+</li>
+<li><span class="math inline">\(\beta_0\)</span> = a global intercept (the only fixed effect — that’s why <code>X</code> is a column of 1s)<br>
+</li>
+<li><span class="math inline">\(w(\mathbf{s}_i)\)</span> = a zero-mean <strong>anisotropic 2D Matérn Gaussian process</strong> with
+<ul>
+<li>covariance function: <code>matern_anisotropic2D</code><br>
+</li>
+<li>smoothness <span class="math inline">\(\nu = 1.5\)</span> (the default for Matérn in <strong>gpgp</strong> unless <code>nu</code> is changed)<br>
+</li>
+<li>geometric anisotropy (different range parameters in the two rotated directions)<br>
+</li>
+</ul></li>
+<li><span class="math inline">\(\varepsilon_i \sim N(0, \tau^2)\)</span> = independent nugget / measurement error<br>
+</li>
+<li>The GP is approximated with <strong>20 nearest-neighbor basis functions</strong> (<code>m_seq = 20</code>), which is why you never need more than ~20 neighbors on a single golf green.</li>
+</ul>
+</section>
+<section id="in-standard-spatial-statistics-notation" class="level6">
+<h6 class="anchored" data-anchor-id="in-standard-spatial-statistics-notation">In standard spatial statistics notation</h6>
+<p><span class="math display">\[
+y(\mathbf{s}) \sim \mathcal{GP}\Bigl( \beta_0,\; \sigma^2 \cdot C_{\text{aniso-Matérn}}(\cdot;\theta,\psi) + \tau^2 I \Bigr)
+\]</span></p>
+<p>with Vecchia approximation using <span class="math inline">\(m=20\)</span> neighbors and geometric anisotropy.</p>
+<p>This approach allows us to capture spatial correlations and provide uncertainty estimates for our predictions. We will implement this approach to all boundary types for all rounds, in the hopes to create a smooth heatmap of predicted strokes remaining across the entire hole for every round. We used our player data to fit the model, then predicted across a grid of locations covering the hole to visualize spatial variation.</p>
+<p><img src="predictions.png" class="img-fluid" alt="predictions"><em>Predicted Strokes Remaining based on the GPGP Model for our data vs smoothed across the entire grid</em></p>
+</section>
+</section>
+</section>
+</section>
+<section id="future-work" class="level2">
+<h2 class="anchored" data-anchor-id="future-work">Future Work</h2>
+<p>Our next steps involve refining the Gaussian Process model to better capture spatial dependencies and improve prediction accuracy. We plan to include other boundaries and rounds. Ultimately, we hope to develop a comprehensive tool that can assist golfers in strategizing their play based on spatial predictions of strokes remaining.</p>
+<p><img src="hope.png" class="img-fluid" alt="hope"><em>Strokes Remaining for all Rounds using just our player data</em></p>
 
 
 <!-- -->
 
-</section>
 </section>
 </section>
 
@@ -736,16 +891,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Golf is a globally popular sport centered on precision and consistency. Players aim to complete a course in as few strokes as possible, navigating anywhere from 100 to over 600 yards from the tee box to the hole while avoiding strategically placed obstacles. This project investigates the spatial and strategic elements of professional golf, with an initial focus on both the number of strokes remaining to hole out, and the variability associated with this estimate. Using data from the first hole of the 2023 Players Championship at TPC Sawgrass—comprising 1,764 strokes taken by 139 unique golfers, including coordinate locations and lie characteristics—we have mapped and transformed this data into a structured format, incorporating shapefiles of the golf course and applying spatial transformations. Through exploratory analysis, we aim to understand spatial variation in stroke progression. Current efforts focus on refining and interpreting this analysis, laying the groundwork for future modeling of stroke progression. The ultimate goal is to estimate, with uncertainty, the predicted number of strokes remaining for any location on the hole, enabling more informed strategies for playing the course.</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">### Research Methodology</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>started with plotting data with API key from google maps. We found the clarify to be diminished on certain parts of the hole. This was an issue as we need clear boundaries on the hole map marking the change in terrain to easily classify ball locations. </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>more to come ....</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Spatial Determination of Number of Shots to Hole Out on a Professional Golf Hole</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Abstract</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Golf is a globally popular sport centered on precision and consistency. Players aim to complete a course in as few strokes as possible, navigating anywhere from 100 to over 600 yards from the tee box to the hole while avoiding strategically placed obstacles. This project investigates the spatial and strategic elements of professional golf, with an initial focus on both the number of strokes remaining to hole out, and the variability associated with this estimate. Using data from the first hole of the 2023 Players Championship at TPC Sawgrass—comprising 1,764 strokes taken by 139 unique golfers, including coordinate locations and lie characteristics—we have mapped and transformed this data into a structured format, incorporating shapefiles of the golf course and applying spatial transformations. Through exploratory analysis, we aim to understand spatial variation in stroke progression. Current efforts focus on refining and interpreting this analysis, laying the groundwork for future modeling of stroke progression. The ultimate goal is to estimate, with uncertainty, the predicted number of strokes remaining for any location on the hole, enabling more informed strategies for playing the course.</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">### Hole 1 Overview</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>To begin this project we used data from the 2023 PGA Tour Players Championship at TPC Sawgrass. We focused on the first hole, a par 4 with a length of 385 yards. The data included shot locations, strokes taken, and player information for 139 unique golfers.</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="al">![Hole 1 Info](info.png)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>***Hole 1 Overview**: Image from <span class="co">[</span><span class="ot">pgatour.com</span><span class="co">](https://www.pgatour.com/tournaments/2023/the-players-championship/R2023011/course-stats)</span>*</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">### Cleaning data and Map</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>In our exploratory data analysis, we found some problems with the initial data. The X, Y, Z coordiantes were in an unknown coordinate system, so we had to transform them into latitude and longitude using ArcGIS and a linear model. Additionally, we had to make our own map of the hole using shapefiles from TPC Sawgrass and ArcGIS.</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="al">![ArcGIS](arcgis.png)</span>*How we made our Hole 1 map in ArcGIS*</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>After transforming the coordinates and making the map, we joined the shot data with the map data to classify each shot based on its location on the hole (e.g., fairway, rough, bunker). We created a new variable called NewBoundary to represent these classifications and to easily define spatial variation than can occur on different sides of the whole despite similar terrain.</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="al">![plot_data](plot_data.png)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## Research Methodology</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>After cleaning and transforming the data, we focused on modeling the number of strokes remaining to hole out (StrokesRemaining) based on the shot location (NewBoundary) and round number (Round). We used a linear mixed-effects model to account for both fixed effects (NewBoundary and Round) and random effects (PlayerLastName) to capture individual player variability.</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exloring Spatial Variation through Linear Model</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Linear Mixed-Effects Model Notation</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>Let:</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$y_{ij}$ = StrokesRemaining for player $i$ on observation $j$</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\beta_k$ = fixed-effect coefficients for each NewBoundary category (because of <span class="in">`-1`</span>, the model includes no intercept and estimates one coefficient per category)</span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\gamma_r$ = fixed-effect coefficients for each Round (factor) level</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$b_i \sim N(0, \sigma_b^2)$ = random intercept for player $i$</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ss">* </span>$\epsilon_{ij} \sim N(0, \sigma^2)$ = residual error</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>The model can be written as:</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>y_{ij} = \sum_{k=1}^{K} \beta_k \cdot \text{NewBoundary}*{ijk}</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>;+</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>\sum*{r=2}^{R} \gamma_r \cdot \mathbb{1}(\text{Round}*{ij} = r)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>;+</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>b_i</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>;+</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>\epsilon*{ij}.</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>By applying our model, we got the results below. </span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Linear Mixed Model Output (Formatted Like `lmer` Summary)</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">Linear mixed model fit by REML ['lmerMod']</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">Formula: StrokesRemaining ~ -1 + NewBoundary + as.factor(Round) + (1 | PlayerLastName)</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">Data: filtered_data</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in">REML criterion at convergence: 1668.2</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="in">Scaled residuals:</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in">     Min      1Q  Median      3Q     Max</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in"> -2.6382 -0.7887 -0.4565  0.8761  3.1484</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">Random effects:</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in"> Groups          Name        Variance   Std.Dev.</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in"> PlayerLastName  (Intercept) 0.0008314  0.02883</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in"> Residual                     0.3509525 0.59241</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">Number of obs: 918, groups: PlayerLastName, 73</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">Fixed effects:</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">                                       Estimate Std. Error t value</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryFairway                     2.65860    0.04928  53.944</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryFairway Bunker              3.22246    0.24284  13.270</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryFringe                      2.01567    0.26547   7.593</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryGreen                       1.43844    0.04346  33.096</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryGreenside Bunker Bottom     3.71937    0.18492  20.113</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryGreenside Bunker Top        3.17733    0.17165  18.511</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryRough                       3.13767    0.07157  43.839</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryTree Outline Left           3.47234    0.08905  38.992</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryTree Outline Right          3.40411    0.34537   9.856</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="in"> NewBoundaryTree Outline Top            3.62730    0.34712  10.450</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in"> as.factor(Round)2                     -0.16437    0.05575  -2.948</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in"> as.factor(Round)3                     -0.08638    0.05566  -1.552</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="in"> as.factor(Round)4                      0.03694    0.05537   0.667</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">Correlation matrix not shown by default, as p = 13 &gt; 12.</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">Use print(x, correlation=TRUE) or vcov(x) if you need it.</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>With these results we learned that, for example, being in the fairway is associated with an estimated 2.66 strokes remaining to hole out, while being in the rough is associated with an estimated 3.14 strokes remaining, holding other factors constant. This indicates that players in the fairway are expected to require fewer strokes to complete the hole compared to those in the rough. Additionally, the random effect for PlayerLastName suggests that there is some variability in strokes remaining that can be attributed to individual player differences. As for the round effects, Round 2 shows a significant decrease in strokes remaining compared to Round 1, while Rounds 3 and 4 do not show significant differences.</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="fu">##### GPGP Spatial Model</span></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>To further explore spatial variation, we are working on implementing a model that models Strokes remaining using a mean-only (intercept) Gaussian process regression with an anisotropic 2D Matérn covariance function, implemented via the Vecchia approximation with 20 nearest neighbors using the R package gpgp.</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="fu">###### GPGP Model Notation</span></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a>y_i = \beta_0 + w(\mathbf{s}_i) + \varepsilon_i, \quad i = 1,\dots,n</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>where</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$y_i$ = <span class="in">`StrokesRemaining`</span> (observed strokes-to-go from location $i$ on the green)  </span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\beta_0$ = a global intercept (the only fixed effect — that’s why <span class="in">`X`</span> is a column of 1s)  </span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$w(\mathbf{s}_i)$ = a zero-mean **anisotropic 2D Matérn Gaussian process** with  </span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>covariance function: <span class="in">`matern_anisotropic2D`</span>  </span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>smoothness $\nu = 1.5$ (the default for Matérn in **gpgp** unless <span class="in">`nu`</span> is changed)  </span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>geometric anisotropy (different range parameters in the two rotated directions)  </span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\varepsilon_i \sim N(0, \tau^2)$ = independent nugget / measurement error  </span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The GP is approximated with **20 nearest-neighbor basis functions** (<span class="in">`m_seq = 20`</span>), which is why you never need more than ~20 neighbors on a single golf green.</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="fu">###### In standard spatial statistics notation</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>y(\mathbf{s}) \sim \mathcal{GP}\Bigl( \beta_0,\; \sigma^2 \cdot C_{\text{aniso-Matérn}}(\cdot;\theta,\psi) + \tau^2 I \Bigr)</span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>with Vecchia approximation using $m=20$ neighbors and geometric anisotropy.</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>This approach allows us to capture spatial correlations and provide uncertainty estimates for our predictions. We will implement this approach to all boundary types for all rounds, in the hopes to create a smooth heatmap of predicted strokes remaining across the entire hole for every round. We used our player data to fit the model, then predicted across a grid of locations covering the hole to visualize spatial variation.</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="al">![predictions](predictions.png)</span>*Predicted Strokes Remaining based on the GPGP Model for our data vs smoothed across the entire grid*</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## Future Work</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>Our next steps involve refining the Gaussian Process model to better capture spatial dependencies and improve prediction accuracy. We plan to include other boundaries and rounds. Ultimately, we hope to develop a comprehensive tool that can assist golfers in strategizing their play based on spatial predictions of strokes remaining.</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a><span class="al">![hope](hope.png)</span>*Strokes Remaining for all Rounds using just our player data*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
