@@ -30,8 +30,8 @@ Look at my undergraduate research of spatial analytics from PGA Tour data. Using
 :::
 
 ::: {.g-col-6}
-### [Data Exploration Project](projects/eda.qmd)
-Learn how I explore datasets to find interesting patterns and answer questions. Coming soon!
+### [NFL Big Data Bowl 2025 Prediction Competition](projects/nfl.qmd)
+Using machine learning techniques in Python, I developed predictive models to forecast post release player movement based on player tracking data from the NFL Big Data Bowl 2025 competition. Coming soon!
 :::
 
 ::: {.g-col-6}
@@ -44,6 +44,9 @@ Using web scraping with Selenium and BeautifulSoup in Python, I built a data-dri
 See how I tackle a data science project beginning to end. Coming soon!
 :::
 
+::: {.g-col-6}
+### [Data Exploration Project](projects/eda.qmd)
+Learn how I explore datasets to find interesting patterns and answer questions. Coming soon!
 :::
 
 ---
