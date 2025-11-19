@@ -21,12 +21,15 @@ website:
             href: projects/index.md
           - text: "Golf Analytics Research"
             href: projects/golf.md
-          - text: "Exploratory Data Analysis"
-            href: projects/eda.qmd
+          - text: "NFL Big Data Bowl 2025"
+            href: projects/nfl.md
           - text: "Data Acquisition: Basketball Scouting"
             href: projects/data-acquisition.md
           - text: "Final Project"
             href: projects/final-project.qmd
+          - text: "Exploratory Data Analysis"
+            href: projects/eda.qmd
+
     right:
       - icon: github
         href: https://github.com/cottonjenn
@@ -38,9 +41,10 @@ website:
       contents:
         - projects/index.md
         - projects/golf.md
-        - projects/eda.qmd
+        - projects/nfl.md
         - projects/data-acquisition.md
         - projects/final-project.qmd
+        - projects/eda.qmd
 
 format:
   html:

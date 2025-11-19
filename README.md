@@ -33,9 +33,11 @@ This repository provides a simple template for creating a personal data science 
 ├── index.md             # Your homepage
 ├── about.md             # About me page
 ├── projects/            # Your project files
-│   ├── eda.qmd          # Data exploration template
-│   ├── data-acquisition.qmd  # Data collection template
-│   └── final-project.qmd     # Final project template
+│   ├── golf.md          # Golf analytics project
+│   ├── nfl.md          # NFL Big Data Bowl prediction modeling
+│   ├── data-acquisition.qmd  # NBA Scouting Report
+│   ├── final-project.qmd     # Final project template
+│   └── eda.qmd          # Data exploration template
 └── styles.css           # Custom styling
 ```
 
