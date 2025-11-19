@@ -30,7 +30,7 @@ Look at my undergraduate research of spatial analytics from PGA Tour data. Using
 :::
 
 ::: {.g-col-lg-6 .g-col-12}
-### [NFL Big Data Bowl 2025 Prediction Competition](projects/nfl.qmd)
+### [NFL Big Data Bowl 2025 Prediction Competition](projects/nfl.md)
 Using machine learning techniques in Python, I developed predictive models to forecast post release player movement based on player tracking data from the NFL Big Data Bowl 2025 competition. Coming soon!
 :::
 
@@ -49,6 +49,7 @@ See how I tackle a data science project beginning to end. Coming soon!
 Learn how I explore datasets to find interesting patterns and answer questions. Coming soon!
 :::
 
+:::
 ---
 
 *Thanks for visiting! Feel free to explore my projects and see what I'm learning.*
