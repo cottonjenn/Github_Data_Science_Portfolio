@@ -14,7 +14,7 @@
     "href": "index.html",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "Welcome to my data science portfolio!\nI’m a Statistics and Data Science major at BYU from Houston, Texas. This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\nCheck out the About Me tab to know more about me and my background.\n\n\nThis portfolio shows my work learning data science which includes:\n\nTutorial Blog made in markdown explaining a simple SQL topic for Data Science\nProjects in my Data Science class (BYU Stat 386) coded in Python and markdown\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\n\n\nLook at my undergraduate research of spatial analytics from PGA Tour data. Using R, ArcGIS, and spatial transformations, I analyze and predict stroke progression on a professional golf hole.\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions. Coming soon!\n\n\n\nUsing web scraping with Selenium and BeautifulSoup in Python, I built a data-driven scouting system that identifies international players who best fit the Kings’ roster needs.\n\n\n\nSee how I tackle a data science project beginning to end. Coming soon!\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+    "text": "Welcome to my data science portfolio!\nI’m a Statistics and Data Science major at BYU from Houston, Texas. This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.\nCheck out the About Me tab to know more about me and my background.\n\n\nThis portfolio shows my work learning data science which includes:\n\nTutorial Blog made in markdown explaining a simple SQL topic for Data Science\nProjects in my Data Science class (BYU Stat 386) coded in Python and markdown\n\nI built this site using Quarto and host it on GitHub Pages.\n\n\n\n\n\n\nLook at my undergraduate research of spatial analytics from PGA Tour data. Using R, ArcGIS, and spatial transformations, I analyze and predict stroke progression on a professional golf hole.\n\n\n\nUsing machine learning techniques in Python, I developed predictive models to forecast post release player movement based on player tracking data from the NFL Big Data Bowl 2025 competition. Coming soon!\n\n\n\nUsing web scraping with Selenium and BeautifulSoup in Python, I built a data-driven scouting system that identifies international players who best fit the Kings’ roster needs.\n\n\n\nSee how I tackle a data science project beginning to end. Coming soon!\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions. Coming soon!\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
   },
   {
     "objectID": "index.html#overview",
@@ -28,7 +28,7 @@
     "href": "index.html#my-projects",
     "title": "Welcome to My Data Science Portfolio",
     "section": "",
-    "text": "Look at my undergraduate research of spatial analytics from PGA Tour data. Using R, ArcGIS, and spatial transformations, I analyze and predict stroke progression on a professional golf hole.\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions. Coming soon!\n\n\n\nUsing web scraping with Selenium and BeautifulSoup in Python, I built a data-driven scouting system that identifies international players who best fit the Kings’ roster needs.\n\n\n\nSee how I tackle a data science project beginning to end. Coming soon!\n\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
+    "text": "Look at my undergraduate research of spatial analytics from PGA Tour data. Using R, ArcGIS, and spatial transformations, I analyze and predict stroke progression on a professional golf hole.\n\n\n\nUsing machine learning techniques in Python, I developed predictive models to forecast post release player movement based on player tracking data from the NFL Big Data Bowl 2025 competition. Coming soon!\n\n\n\nUsing web scraping with Selenium and BeautifulSoup in Python, I built a data-driven scouting system that identifies international players who best fit the Kings’ roster needs.\n\n\n\nSee how I tackle a data science project beginning to end. Coming soon!\n\n\n\nLearn how I explore datasets to find interesting patterns and answer questions. Coming soon!\n\n\nThanks for visiting! Feel free to explore my projects and see what I’m learning."
   },
   {
     "objectID": "projects/golf.html#abstract",
@@ -278,9 +278,9 @@
     "href": "projects/nfl.html",
     "title": "",
     "section": "",
-    "text": "Code",
+    "text": "Code\n\n\n\n\n\nNFL Big Data Bowl 2025 Prediction Competition\nI have been working on this project since September 2025. Using machine learning techniques in Python, I developed predictive models to forecast post release player movement based on player tracking data from the NFL Big Data Bowl 2025 competition.\nI will update this page with more details about my methodology, data cleaning, and modeling approaches soon!",
     "crumbs": [
-      "nfl.html"
+      "NFL Big Data Bowl 2025 Prediction Competition"
     ]
   }
 ]
