@@ -6,6 +6,11 @@ format:
 ---
 ![](JWorthen_Headshot.jpg){.top-right-fixed}
 
+## Get to know me
+
+- I love to play sports, paint, and do wedding makeup and hair. 
+- From Houston, Texas
+
 ## Education
 
 - **Statistics: Data Science** - Brigham Young University, 2026
@@ -44,11 +49,6 @@ format:
 - Energy Systems and Consumption
 - Humanitarian Aid
 - Crime Analysis
-
-## Get to know me
-
-- I love to play sports, paint, and do wedding makeup and hair. 
-- From Houston, Texas
 
 ## Contact
 

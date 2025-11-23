@@ -200,7 +200,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#hello-im-jenna" id="toc-hello-im-jenna" class="nav-link active" data-scroll-target="#hello-im-jenna">Hello! I’m Jenna</a>
   <ul class="collapse">
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
   <li><a href="#my-projects" id="toc-my-projects" class="nav-link" data-scroll-target="#my-projects">My Projects</a></li>
   </ul></li>
   </ul>
@@ -232,22 +231,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Hello! I’m Jenna</h1>
 <p>Welcome to my data science portfolio!</p>
 <p>I’m a Statistics and Data Science major at BYU from Houston, Texas. This site shows my journey learning data science and analytics. Here you’ll find projects that demonstrate what I’ve learned and discovered.</p>
-<p>Check out the About Me tab to know more about me and my background.</p>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>This portfolio shows my work learning data science which includes:</p>
-<ul>
-<li>Tutorial Blog made in markdown explaining a simple SQL topic for Data Science</li>
-<li>Projects in my Data Science class (BYU Stat 386) coded in Python and markdown</li>
-</ul>
-<p>I built this site using <a href="https://quarto.org/">Quarto</a> and host it on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
-</section>
+<p>Check out the <a href="./about.html">About Me tab</a> to know more about me and my background.</p>
 <section id="my-projects" class="level2">
 <h2 class="anchored" data-anchor-id="my-projects">My Projects</h2>
 <div class="grid">
 <section id="golf-analytics-research" class="level3 g-col-lg-6 g-col-12">
 <h3 class="anchored" data-anchor-id="golf-analytics-research"><a href="./projects/golf.html">Golf Analytics Research</a></h3>
-<p>Look at my undergraduate research of spatial analytics from PGA Tour data. Using R, ArcGIS, and spatial transformations, I analyze and predict stroke progression on a professional golf hole.</p>
+<p>In this project, I’m developing a spatial model that predicts—with uncertainty—how many strokes a professional golfer needs to hole out from any location on the hole, using 1,764 real shots from 139 players on Hole 1 of the 2023 Players Championship at TPC Sawgrass. The raw shot coordinates came in an undocumented coordinate system, so I reverse-engineered the correct transformation using ArcGIS, built the full hole map from official shapefiles, and spatially joined every shot to precise boundaries (fairway, rough, bunkers, trees, green, fringe). I then fit both linear mixed-effects models (with player random intercepts) and an anisotropic 2D Matérn Gaussian process (Vecchia approximation in R’s gpgp package) to produce smooth, interpretable heatmaps of expected strokes remaining across the entire hole. This work demonstrates tough spatial data wrangling, coordinate system transformations, advanced mixed-effects and Gaussian process modeling, and turning complex geospatial data into actionable, visual insights. If you need someone who can clean, map, and model real-world location data end-to-end, this is a strong example.</p>
 </section>
 <section id="nfl-big-data-bowl-2025-prediction-competition" class="level3 g-col-lg-6 g-col-12">
 <h3 class="anchored" data-anchor-id="nfl-big-data-bowl-2025-prediction-competition"><a href="./projects/nfl.html">NFL Big Data Bowl 2025 Prediction Competition</a></h3>
@@ -255,11 +245,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="nba-scouting-report-data-collection-project" class="level3 g-col-lg-6 g-col-12">
 <h3 class="anchored" data-anchor-id="nba-scouting-report-data-collection-project"><a href="./projects/data-acquisition.html">NBA Scouting Report: Data Collection Project</a></h3>
-<p>Using web scraping with Selenium and BeautifulSoup in Python, I built a data-driven scouting system that identifies international players who best fit the Kings’ roster needs.</p>
+<p>I created a data-driven scouting report that pinpoints international prospects who specifically fix the Sacramento Kings’ biggest weaknesses after a 17-year playoff drought. Starting from mock data, I leveled it up by web-scraping real 2020-21 NBA stats from Basketball-Reference using Python, Selenium, and BeautifulSoup, defeating JavaScript lazy-loading that static methods couldn’t handle. I cleaned and merged the data, engineered advanced metrics, and built a weighted “Kings Fit Score” focused on rebounding, playmaking, defensive impact, and efficiency. The result: a ranked list of hidden-gem prospects who outperform the current roster exactly where Sacramento needs it most. This project showcases end-to-end web scraping, robust data cleaning, domain-driven algorithm design, clear visualization, and ethical data practices. If you’re looking for someone who can independently turn messy, real-world data into actionable insights—especially in sports analytics or high-impact decision support—this is a great example of how I work.</p>
 </section>
-<section id="final-project" class="level3 g-col-lg-6 g-col-12">
-<h3 class="anchored" data-anchor-id="final-project"><a href="./projects/final-project.html">Final Project</a></h3>
-<p>See how I tackle a data science project beginning to end. Coming soon!</p>
+<section id="tutorial-blog" class="level3 g-col-lg-6 g-col-12">
+<h3 class="anchored" data-anchor-id="tutorial-blog"><a href="./blog.html">Tutorial Blog</a></h3>
+<p>Tutorial Blog made in markdown explaining a simple SQL topic for Data Science</p>
+</section>
+<section id="final-project-baseball-performance-vs-salary" class="level3 g-col-lg-6 g-col-12">
+<h3 class="anchored" data-anchor-id="final-project-baseball-performance-vs-salary"><a href="./projects/final-project.html">Final Project: Baseball Performance vs Salary</a></h3>
+<p>Coming soon! Project in my Data Science class (BYU Stat 386) coded in Python and markdown. I explored the relationship between MBA performance and salary scraped from baseball-reference.com. I made a python package to data clean, visualize, and analyze regression to find insights. I presented my findings in a report and Stream-lit app.</p>
 </section>
 <section id="data-exploration-project" class="level3 g-col-lg-6 g-col-12">
 <h3 class="anchored" data-anchor-id="data-exploration-project"><a href="./projects/eda.html">Data Exploration Project</a></h3>
@@ -267,6 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </div>
 <hr>
+<p>I built this site using <a href="https://quarto.org/">Quarto</a> and host it on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
 <p><em>Thanks for visiting! Feel free to explore my projects and see what I’m learning.</em></p>
 
 
@@ -738,48 +733,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>I'm a Statistics and Data Science major at BYU from Houston, Texas.</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>This site shows my journey learning data science and analytics. Here you'll find projects that demonstrate what I've learned and discovered.</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Check out the About Me tab to know more about me and my background. </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Check out the <span class="co">[</span><span class="ot">About Me tab</span><span class="co">](about.md)</span> to know more about me and my background. </span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## My Projects</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>This portfolio shows my work learning data science which includes:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>::: {.grid}</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Tutorial Blog made in markdown explaining a simple SQL topic for Data Science</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Projects in my Data Science class (BYU Stat 386) coded in Python and markdown</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>I built this site using <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span> and host it on <span class="co">[</span><span class="ot">GitHub Pages</span><span class="co">](https://pages.github.com/)</span>.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## My Projects</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>::: {.grid}</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Golf Analytics Research](projects/golf.md)</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>Look at my undergraduate research of spatial analytics from PGA Tour data. Using R, ArcGIS, and spatial transformations, I analyze and predict stroke progression on a professional golf hole.</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### [NFL Big Data Bowl 2025 Prediction Competition](projects/nfl.md)</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Using machine learning techniques in Python, I developed predictive models to forecast post release player movement based on player tracking data from the NFL Big Data Bowl 2025 competition. Coming soon!</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">### [NBA Scouting Report: Data Collection Project](projects/data-acquisition.md)</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>Using web scraping with Selenium and BeautifulSoup in Python, I built a data-driven scouting system that identifies international players who best fit the Kings' roster needs. </span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Final Project](projects/final-project.qmd)</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>See how I tackle a data science project beginning to end. Coming soon!</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Data Exploration Project](projects/eda.qmd)</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Learn how I explore datasets to find interesting patterns and answer questions. Coming soon!</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Golf Analytics Research](projects/golf.md)</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>In this project, I’m developing a spatial model that predicts—with uncertainty—how many strokes a professional golfer needs to hole out from any location on the hole, using 1,764 real shots from 139 players on Hole 1 of the 2023 Players Championship at TPC Sawgrass.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>The raw shot coordinates came in an undocumented coordinate system, so I reverse-engineered the correct transformation using ArcGIS, built the full hole map from official shapefiles, and spatially joined every shot to precise boundaries (fairway, rough, bunkers, trees, green, fringe). I then fit both linear mixed-effects models (with player random intercepts) and an anisotropic 2D Matérn Gaussian process (Vecchia approximation in R’s gpgp package) to produce smooth, interpretable heatmaps of expected strokes remaining across the entire hole. This work demonstrates tough spatial data wrangling, coordinate system transformations, advanced mixed-effects and Gaussian process modeling, and turning complex geospatial data into actionable, visual insights. If you need someone who can clean, map, and model real-world location data end-to-end, this is a strong example.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### [NFL Big Data Bowl 2025 Prediction Competition](projects/nfl.md)</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Using machine learning techniques in Python, I developed predictive models to forecast post release player movement based on player tracking data from the NFL Big Data Bowl 2025 competition. Coming soon!</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">### [NBA Scouting Report: Data Collection Project](projects/data-acquisition.md)</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>I created a data-driven scouting report that pinpoints international prospects who specifically fix the Sacramento Kings’ biggest weaknesses after a 17-year playoff drought. Starting from mock data, I leveled it up by web-scraping real 2020-21 NBA stats from Basketball-Reference using Python, Selenium, and BeautifulSoup, defeating JavaScript lazy-loading that static methods couldn’t handle. I cleaned and merged the data, engineered advanced metrics, and built a weighted “Kings Fit Score” focused on rebounding, playmaking, defensive impact, and efficiency.</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>The result: a ranked list of hidden-gem prospects who outperform the current roster exactly where Sacramento needs it most. This project showcases end-to-end web scraping, robust data cleaning, domain-driven algorithm design, clear visualization, and ethical data practices. If you’re looking for someone who can independently turn messy, real-world data into actionable insights—especially in sports analytics or high-impact decision support—this is a great example of how I work.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Tutorial Blog](blog.md)</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>Tutorial Blog made in markdown explaining a simple SQL topic for Data Science</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Final Project: Baseball Performance vs Salary](projects/final-project.qmd)</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>Coming soon! Project in my Data Science class (BYU Stat 386) coded in Python and markdown. I explored the relationship between MBA performance and salary scraped from baseball-reference.com. I made a python package to data clean, visualize, and analyze regression to find insights. I presented my findings in a report and Stream-lit app.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>::: {.g-col-lg-6 .g-col-12}</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="fu">### [Data Exploration Project](projects/eda.qmd)</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>Learn how I explore datasets to find interesting patterns and answer questions. Coming soon!</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>I built this site using <span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org/)</span> and host it on <span class="co">[</span><span class="ot">GitHub Pages</span><span class="co">](https://pages.github.com/)</span>.</span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>*Thanks for visiting! Feel free to explore my projects and see what I'm learning.*</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
