@@ -4,7 +4,10 @@ format:
     html:
         css: styles.css
 ---
-![](JWorthen_Headshot.jpg){.top-right-fixed}
+
+<div style="float: right; margin: 15px 0 20px 30px; width: 230px; max-width: 42vw;">
+<img src="JWorthen_Headshot.jpg" alt="Jenna Worthen" style="width: 100%; height: auto; border-radius: 14px; box-shadow: 0 6px 16px rgba(0,0,0,0.12);">
+</div>
 
 ## Get to know me
 
